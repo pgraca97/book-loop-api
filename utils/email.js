@@ -10,14 +10,14 @@ const FRONTEND_BASE_URL = process.env.FRONTEND_BASE_URL || 'http://localhost:300
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'bookloopesmad@gmail.com',
-        pass: 'irrj bvps vajy lizy'
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
 const sendEmail = async (to, subject, html) => {
   const mailOptions = {
-    from: 'bookloopesmad@gmail.com',
+    from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
     to,
     subject,
     html
